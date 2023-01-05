@@ -8,13 +8,19 @@ def save_items(filepath, data):
         json.dump(data, f)
 
 
-save_items("test.json", {"key": "value"})
+def load_items(filepath):
+    with open(filepath, "r") as f:
+        data = json.load(f)
+
 
 if len(sys.argv) == 2:
     command = sys.argv[1]
     print(command)
 
     if command == "save":
+        key = input("Enter a key: ")
+        data[key] = clipboard.paste()
+
         print("save")
     elif command == "load":
         print("load")
